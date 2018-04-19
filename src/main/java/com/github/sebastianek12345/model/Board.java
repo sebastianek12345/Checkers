@@ -14,44 +14,34 @@ public class Board {
 
     TextIO textIO = TextIoFactory.getTextIO();
 
+
     public Board() {
 
         boardCheckers = new Color[column][rownum];
 
-        boardCheckers[0][1] = w1;
-        boardCheckers[0][3] = w1;
-        boardCheckers[0][5] = w1;
-        boardCheckers[0][7] = w1;
-        boardCheckers[1][0] = w1;
-        boardCheckers[1][2] = w1;
-        boardCheckers[1][4] = w1;
-        boardCheckers[1][6] = w1;
-        boardCheckers[2][1] = w1;
-        boardCheckers[2][3] = w1;
-        boardCheckers[2][5] = w1;
-        boardCheckers[2][7] = w1;
+        for (int i = 0; i < rownum; i++) {
 
+            System.out.println("\n");
 
-        boardCheckers[5][0] = b1;
-        boardCheckers[5][2] = b1;
-        boardCheckers[5][4] = b1;
-        boardCheckers[5][6] = b1;
-        boardCheckers[6][1] = b1;
-        boardCheckers[6][3] = b1;
-        boardCheckers[6][5] = b1;
-        boardCheckers[6][7] = b1;
-        boardCheckers[7][0] = b1;
-        boardCheckers[7][2] = b1;
-        boardCheckers[7][4] = b1;
-        boardCheckers[7][6] = b1;
+            for (int j = 0; j < column; j++) {
 
-        for (int i = 0; i < column; i++) {
-            for (int j = 0; j < rownum; j++) {
-                boolean isEmpty = boardCheckers[i][j] != Color.BLACK && boardCheckers[i][j] != Color.WHITE;
-                if (isEmpty)
+                if (i % 2 != j % 2) {
+                    if (i < 3) {
+                        boardCheckers[i][j] = Color.WHITE;
+                        System.out.print(boardCheckers[i][j]);
+                    } else if (i > 4) {
+                        boardCheckers[i][j] = Color.BLACK;
+                        System.out.print(boardCheckers[i][j]);
+                    } else {
+                        boardCheckers[i][j] = Color.o;
+                        System.out.print(boardCheckers[i][j]);
+                    }
+                } else {
                     boardCheckers[i][j] = Color.o;
-
+                    System.out.print(boardCheckers[i][j]);
+                }
             }
+            System.out.println("\n");
         }
     }
 
@@ -61,7 +51,7 @@ public class Board {
         for (int i = 0; i < rownum; i++) {
             String rowInArray = "";
             for (int j = 0; j < column; j++) {
-                rowInArray += (boardCheckers[i][j] + "    ");
+                rowInArray += (boardCheckers[i][j] + " ");
             }
             rowInArray += "\n";
             output += rowInArray;

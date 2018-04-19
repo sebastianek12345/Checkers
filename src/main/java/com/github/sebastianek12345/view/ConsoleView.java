@@ -7,6 +7,7 @@ import org.beryx.textio.TextIoFactory;
 public class ConsoleView {
 
     TextIO textIO = TextIoFactory.getTextIO();
+
     Board board = new Board();
 
     public int chooseFunctonality() {
@@ -14,7 +15,7 @@ public class ConsoleView {
         int options = textIO.newIntInputReader()
                 .withMinVal(1)
                 .withMaxVal(5)
-                .read("Welcome to game cerating by Sebastian Małecki xd\n" +
+                .read("Welcome to game created by Sebastian Małecki xd\n" +
                         "1) show board\n" +
                         "2) move NE\n" +
                         "3) move NW\n" +
@@ -30,8 +31,8 @@ public class ConsoleView {
 
     public void option() {
 
-        textIO.getTextTerminal().getProperties().setPaneBackgroundColor("red");
-        textIO.getTextTerminal().getProperties().setPromptColor("yellow");
+        textIO.getTextTerminal().getProperties().setPaneBackgroundColor("blue");
+        textIO.getTextTerminal().getProperties().setPromptColor("black");
 
 
         Integer options;
