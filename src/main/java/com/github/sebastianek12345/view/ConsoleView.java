@@ -13,16 +13,26 @@ public class ConsoleView {
 
         int options = textIO.newIntInputReader()
                 .withMinVal(1)
-                .withMaxVal(2)
-                .read("Welcome to game cerating by Sebastian Małecki xd ;)");
+                .withMaxVal(5)
+                .read("Welcome to game cerating by Sebastian Małecki xd\n" +
+                        "1) show board\n" +
+                        "2) move NE\n" +
+                        "3) move NW\n" +
+                        "4) move SE\n" +
+                        "5) move SW\n" +
+                        " Close the program enter: Alt + F4");
 
-        if (options > 0 && options < 2) {
+        if (options > 0 && options < 6) {
             return options;
         } else
-            throw new IllegalArgumentException("Nie ma takiej opcji");
+            throw new IllegalArgumentException("This option is unavaliable");
     }
 
     public void option() {
+
+        textIO.getTextTerminal().getProperties().setPaneBackgroundColor("red");
+        textIO.getTextTerminal().getProperties().setPromptColor("yellow");
+
 
         Integer options;
 
@@ -30,7 +40,33 @@ public class ConsoleView {
             options = chooseFunctonality();
 
             if (options == 1) {
-                board.print();
+                board.printBoard();
+            }
+
+            if (options == 2) {
+                board.moveNE(textIO.newIntInputReader().read("Please enter first coordinate\n"), textIO.newIntInputReader().read("Please enter second coordinate\n"));
+                board.printBoard();
+                textIO.newStringInputReader().read("Move has been done\n");
+
+            }
+
+            if (options == 3) {
+                board.moveNW(textIO.newIntInputReader().read("Please enter first coordinate\n"), textIO.newIntInputReader().read("Please enter second coordinate\n"));
+                board.printBoard();
+                textIO.newStringInputReader().read("Move has been done\n");
+
+            }
+
+            if (options == 4) {
+                board.moveSE(textIO.newIntInputReader().read("Please enter first coordinate\n"), textIO.newIntInputReader().read("Please enter second coordinate\n"));
+                board.printBoard();
+                textIO.newStringInputReader().read("Move has been done\n");
+            }
+
+            if (options == 5) {
+                board.moveSW(textIO.newIntInputReader().read("Please enter first coordinate\n"), textIO.newIntInputReader().read("Please enter second coordinate\n"));
+                board.printBoard();
+                textIO.newStringInputReader().read("Move has been done\n");
             }
         } while (options != 0);
     }
